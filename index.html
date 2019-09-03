@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Cake @ North Wing</title>
+
+  <link rel="icon" type="image/png" href="/birthday-cake.png">
+  <meta property="og:site_name" content="Cake @ North Wing" />
+  <meta property="og:url" content="http://northwing.000webhostapp.com/">
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="See when you are going to have a cake @ NorthWing :)" />
+  <meta property="og:image" content="/cake.jpg" />
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.getElementsByTagName("html")[0].className += " js";</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    h3 {
+      color: aliceblue;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="cd-main-header text-center flex flex-column flex-center">
+    <h1>Cake @ North Wing</h1>
+    <br>
+    <h3>Upcoming Birthdays!</h3>
+  </header>
+
+  <section class="cd-timeline js-cd-timeline">
+    <div id="container" class="container max-width-lg cd-timeline__container">
+
+      <script>
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ];
+
+        var people = [
+          {
+            name: "Ms. Behjat Zuhaira",
+            bday: new Date("1/11"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Ms. Shawana Jameel",
+            bday: new Date("1/17"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Ms. Lailma",
+            bday: new Date("2/8"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Mr. Atique Ahmed Zafar",
+            bday: new Date("2/17"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Mr. Hasham Shiraz",
+            bday: new Date("4/24"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Mr. Khurram Iqbal",
+            bday: new Date("5/14"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Mr. Waseem Abbas",
+            bday: new Date("6/21"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Mr. Qasim Malik",
+            bday: new Date("7/12"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Ms. Isma ul Hassan",
+            bday: new Date("7/22"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Ms. Hilal Jan",
+            bday: new Date("8/12"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Dr. Ashfaq Hussain Farooqi",
+            bday: new Date("8/19"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Mr. Rashid Mehmood",
+            bday: new Date("9/1"),
+            pic: "",
+            msg: "Cake Coming on Friday, 6th September"
+          },
+          {
+            name: "Ms. Saadia Maqbool",
+            bday: new Date("9/9"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Mr. Basharat Mehmood",
+            bday: new Date("9/22"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Mr. Junaid",
+            bday: new Date("9/25"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Ms. Shehla Saif",
+            bday: new Date("10/7"),
+            pic: "",
+            msg: ""
+          },
+          {
+            name: "Mr. Zaheer Sani",
+            bday: new Date("12/8"),
+            pic: "",
+            msg: ""
+          },
+        ];
+
+        $().ready(function () {
+          $.each(people, function (i, obj) {
+            var name = obj["name"];
+            var bday = obj["bday"];
+            var pic = obj["pic"];
+            var msg = obj["msg"];
+            if ((obj["bday"].getMonth() + 1) == (new Date).getMonth() + 1)
+              $("#container").append(div(name, bday, pic, msg));
+          });
+        });
+        function div(name, bday, pic, msg) {
+          var str = `
+          <div class="cd-timeline__block">
+        <div class="cd-timeline__img cd-timeline__img--picture">
+          <img src="assets/img/cd-icon-picture.svg" alt="Picture">
+        </div> <!-- cd-timeline__img -->
+
+        <div class="cd-timeline__content text-component">
+          <h2>` + name + `</h2>
+          <p class="color-contrast-medium">` + msg + `</p>
+
+          <div class="flex justify-between items-center">
+            <span class="cd-timeline__date">` + bday.getDate() + ` ` + monthNames[bday.getMonth()] + `</span>
+          </div>
+        </div>
+      </div>
+      `;
+          return str;
+        }
+      </script>
+
+    </div>
+  </section> <!-- cd-timeline -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
