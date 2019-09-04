@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:description" content="See when you are going to have a cake @ NorthWing :)" />
   <meta property="og:image" content="/cake.jpg" />
-  
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>document.getElementsByTagName("html")[0].className += " js";</script>
@@ -22,14 +22,48 @@
     h3 {
       color: aliceblue;
     }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      /* position: relative; */
+      /* min-height: 100vh; */
+      height: auto;
+    }
+
+    [class|="confetti"] {
+      position: absolute;
+    }
+
+    .red {
+      background-color: #E94A3F;
+    }
+
+    .yellow {
+      background-color: #FAA040;
+    }
+
+    .blue {
+      background-color: #5FC9F5;
+    }
   </style>
 </head>
 
 <body>
+
   <header class="cd-main-header text-center flex flex-column flex-center">
-    <h1>Cake @ North Wing</h1>
-    <br>
-    <h3>Upcoming Birthdays!</h3>
+    <div class="container">
+      <div>
+        <h1>Birthdays @ North Wing</h1>
+        <br>
+        <h3>Upcoming Birthdays!</h3>
+      </div>
+      <div class="wrapper">
+      </div>
+    </div>
   </header>
 
   <section class="cd-timeline js-cd-timeline">
@@ -143,16 +177,25 @@
             pic: "",
             msg: ""
           },
+          {
+            name: "Mr. Waqar Ali Khan",
+            bday: new Date("12/26"),
+            pic: "",
+            msg: ""
+          },
         ];
 
         $().ready(function () {
+          var startBdaysFrom = false;
           $.each(people, function (i, obj) {
             var name = obj["name"];
             var bday = obj["bday"];
             var pic = obj["pic"];
             var msg = obj["msg"];
-            if ((obj["bday"].getMonth() + 1) == (new Date).getMonth() + 1)
+            if ((obj["bday"].getMonth() + 1) == (new Date).getMonth() + 1 || startBdaysFrom) {
+              startBdaysFrom = true;
               $("#container").append(div(name, bday, pic, msg));
+            }
           });
         });
         function div(name, bday, pic, msg) {
@@ -175,6 +218,63 @@
           return str;
         }
       </script>
+
+      <!-- Confetti Script Begins Here -->
+      <script>
+        $().ready(function () {
+          for (var i = 0; i < 150; i++) {
+            create(i);
+          }
+
+          function create(i) {
+            var width = Math.random() * 8;
+            var height = width * 0.4;
+            var colourIdx = Math.ceil(Math.random() * 3);
+            var colour = "red";
+            switch (colourIdx) {
+              case 1:
+                colour = "yellow";
+                break;
+              case 2:
+                colour = "blue";
+                break;
+              default:
+                colour = "red";
+            }
+            $('<div class="confetti-' + i + ' ' + colour + '"></div>').css({
+              "width": width + "px",
+              "height": height + "px",
+              "top": -Math.random() * 20 + "%",
+              "left": Math.random() * 100 + "%",
+              "opacity": Math.random() + 0.5,
+              "transform": "rotate(" + Math.random() * 360 + "deg)"
+            }).appendTo('.wrapper');
+
+            drop(i);
+          }
+
+          function drop(x) {
+            $('.confetti-' + x).animate({
+              top: "100%",
+              left: "+=" + Math.random() * 15 + "%"
+            }, Math.random() * 3000 + 3000, function () {
+              reset(x);
+            });
+          }
+
+          function reset(x) {
+            $('.confetti-' + x).animate({
+              "top": -Math.random() * 20 + "%",
+              "left": "-=" + Math.random() * 15 + "%"
+            }, 0, function () {
+              drop(x);
+            });
+          }
+        });
+      </script>
+
+
+      <!-- Confetti Script Ends Here -->
 
     </div>
   </section> <!-- cd-timeline -->
