@@ -82,6 +82,12 @@
 
         var people = [
           {
+            name: "Ms. Qurat ul Ain",
+            bday: new Date("1/8"),
+            pic: "",
+            msg: ""
+          },
+          {
             name: "Ms. Behjat Zuhaira",
             bday: new Date("1/11"),
             pic: "",
@@ -203,6 +209,7 @@
               startBdaysFrom = true;
               $("#container").append(div(name, bday, pic, msg));
             }
+            // $("#container").append(div(name, bday, pic, msg));
           });
 
           $.each(people, function (i, obj) {
